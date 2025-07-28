@@ -3060,6 +3060,8 @@ local Compkiller = loadstring(game:HttpGet("https://raw.githubusercontent.com/QC
 local Notifier = Compkiller.newNotify();
 
 -- // Auto Loader \\ --
+local LocalPlayer: Player = Players.LocalPlayer;
+repeat task.wait(0.25) until game:IsLoaded();task.spawn(function() pcall(function() if game:GetService("CoreGui"):FindFirstChild("compkiller_"..LocalPlayer.Name) then game:GetService("CoreGui").DrRay:Destroy() end end) end)
 local LastVersion = http_request({Url = "https://raw.githubusercontent.com/QCG-A/ACG/refs/heads/main/Option/SSVersion"; Method = "GET";})
 local PushedUpdate = false;
 
@@ -3086,13 +3088,12 @@ task.spawn(function()
                         wait(2)
                         loadstring(game:HttpGet("https://raw.githubusercontent.com/QCG-A/SS/refs/heads/main/SS"))()
                         PushedUpdate = false;
-                        
+                        break
                     end
                 else
                     PushedUpdate = false;
                 end
 		end)
-	   break
 	end
 end)
 
