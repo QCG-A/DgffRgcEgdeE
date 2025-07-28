@@ -1161,7 +1161,7 @@ getgenv().UsingRainbowUI = function()
 end
 
 getgenv().StoreEverything = function()
-    local ItemsToStore = getgenv().EveryItemStore;
+    local ItemsToStore = {getgenv().EveryItemStore}
 
     task.spawn(function()
         while getgenv().StoringAnyEverything == true do
