@@ -3055,6 +3055,7 @@ StorageSection:AddDropdown({
 	Values = {"Arrow","Requiem Arrow","Rokakaka","Stop Sign","Hamon Manual","Spin Manual","Stone Mask","Mysterious Camera","Saiba Manual","Carrot","Haunted Sword","Mochi Mochi Devil Fruit","Bomu Bomu Devil Fruit","Bari Bari Devil Fruit","Hie Hie Devil Fruit","Nikyu Nikyu Devil Fruit","Singularity Essence","Dio's Diary","Inverted Spear of Heaven","Dio's Bone","Arasaka","Kujo's Hat'","Hogyoku Fragment","Crimson Cyberdeck","Cortex Support","Sukuna's Cursed Finger","Gloves of Black Silence","Split Soul Katana","OA's Grace","Chain of A Thousand Miles","Cyan Cyberdeck","Tech Monitor"},
 	Callback = function(ItemValue)
     getgenv().EveryItemStore = ItemValue;
+    print(ItemValue)
     end,
 })
 
