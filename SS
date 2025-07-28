@@ -3075,9 +3075,8 @@ task.spawn(function()
                 else
                     PushedUpdate = false;
                 end
-            end)
-        end
-    end
+		end)
+	end
 end)
 
 -- // Auto Skip Loading Menu \\ --
@@ -3230,7 +3229,7 @@ local SuperWalkSpeed = LPSSection:AddToggle({
 	Name = "Super Walkspeed",
 	Flag = "Speed",
 	Default = false,
-	Callback = function(Value),
+	Callback = function(Value)
      getgenv().WalkspeedBypass = Value
     getgenv().SuperSpeed();
     end,
@@ -3240,7 +3239,7 @@ local SuperJumpPower = LPSSection:AddToggle({
 	Name = "Super JumpPower",
 	Flag = "Jump",
 	Default = false,
-	Callback = function(Value),
+	Callback = function(Value)
      getgenv().JumpPowerBypass = Value
     getgenv().SuperJump();
     end,
