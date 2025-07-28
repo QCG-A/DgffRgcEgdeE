@@ -60,6 +60,7 @@ getgenv().AutoPrivateGrinding = false;
 
         -- [Storage Scripts]
         getgenv().StoringAnyEverything = false;
+        getgenv().EveryItemStore = false;
 
         -- [Fighting Scripts]
         getgenv().AutoTeleportPunching = false;
@@ -84,6 +85,45 @@ getgenv().AutoPrivateGrinding = false;
         getgenv().EspItems = false;
 
 -- getgenv --
+
+getgenv().Attacking = function()
+    if game:GetService("Players").LocalPlayer.Data.StandName.Value == "Standless" then
+        game:GetService("ReplicatedStorage"):WaitForChild("StandlessRemote"):WaitForChild("Stab"):FireServer();
+        game:GetService("ReplicatedStorage"):WaitForChild("StandlessRemote"):WaitForChild("Pan"):FireServer();
+        game:GetService("ReplicatedStorage"):WaitForChild("StandlessRemote"):WaitForChild("Kick"):FireServer();
+        game:GetService("ReplicatedStorage"):WaitForChild("StandlessRemote"):WaitForChild("Punch"):FireServer();
+        game:GetService("ReplicatedStorage"):WaitForChild("StandlessRemote"):WaitForChild("Heavy"):FireServer();
+        game:GetService("ReplicatedStorage"):WaitForChild("StandlessRemote"):WaitForChild("Punch"):FireServer();
+        local args = {[1] = false};game:GetService("ReplicatedStorage"):WaitForChild("StandlessRemote"):WaitForChild("Barrage"):FireServer(unpack(args));
+    elseif game:GetService("Players").LocalPlayer.Data.StandName.Value == "Shinra Kusakabe" then
+        game:GetService("ReplicatedStorage"):WaitForChild("ShinraRemote"):WaitForChild("Ignition"):FireServer();
+        game:GetService("ReplicatedStorage"):WaitForChild("ShinraRemote"):WaitForChild("Punch"):FireServer();
+        game:GetService("ReplicatedStorage"):WaitForChild("ShinraRemote"):WaitForChild("Fierce"):FireServer();
+        game:GetService("ReplicatedStorage"):WaitForChild("ShinraRemote"):WaitForChild("Corna"):FireServer();
+    elseif game:GetService("Players").LocalPlayer.Data.StandName.Value == "Shadow The World" then
+        game:GetService("ReplicatedStorage"):WaitForChild("STWRemote"):WaitForChild("TS"):FireServer();
+        game:GetService("ReplicatedStorage"):WaitForChild("STWRemote"):WaitForChild("Knife"):FireServer();
+        game:GetService("ReplicatedStorage"):WaitForChild("STWRemote"):WaitForChild("Donut"):FireServer();
+        game:GetService("ReplicatedStorage"):WaitForChild("STWRemote"):WaitForChild("Eye"):FireServer();
+        game:GetService("ReplicatedStorage"):WaitForChild("STWRemote"):WaitForChild("Kick"):FireServer();
+        game:GetService("ReplicatedStorage"):WaitForChild("STWRemote"):WaitForChild("Punch"):FireServer();
+    elseif game:GetService("Players").LocalPlayer.Data.StandName.Value == "Emperor" then
+        game:GetService("ReplicatedStorage"):WaitForChild("EmperorRemote"):WaitForChild("Punch"):FireServer();
+        local args = {[1] = false};
+        game:GetService("ReplicatedStorage"):WaitForChild("EmperorRemote"):WaitForChild("Consecutive"):FireServer(unpack(args));
+        local args = {[1] = getgenv().Target,[2] = false};
+        game:GetService("ReplicatedStorage"):WaitForChild("EmperorRemote"):WaitForChild("AirShot"):FireServer(unpack(args));
+        local args = {[1] = getgenv().Target,[2] = false};
+        game:GetService("ReplicatedStorage"):WaitForChild("EmperorRemote"):WaitForChild("Curve"):FireServer(unpack(args));
+        local args = {[1] = getgenv().Target,[2] = false};
+        game:GetService("ReplicatedStorage"):WaitForChild("EmperorRemote"):WaitForChild("Homing"):FireServer(unpack(args));
+    else game:GetService("VirtualUser"):ClickButton1(Vector2.new());
+        game.VirtualInputManager:SendKeyEvent(true,"E",false,game);game.VirtualInputManager:SendKeyEvent(true,"G",false,game);game.VirtualInputManager:SendKeyEvent(true,"T",false,game);game.VirtualInputManager:SendKeyEvent(true,"R",false,game);game.VirtualInputManager:SendKeyEvent(false,"Y",false,game);
+        game.VirtualInputManager:SendKeyEvent(false,"E",false,game);game.VirtualInputManager:SendKeyEvent(false,"G",false,game);game.VirtualInputManager:SendKeyEvent(false,"T",false,game);game.VirtualInputManager:SendKeyEvent(false,"R",false,game);game.VirtualInputManager:SendKeyEvent(false,"Y",false,game);
+    end
+end
+
+
 getgenv().SuperSpeed = function()
     task.spawn(function()
         while getgenv().WalkspeedBypass == true and game:GetService("Players").LocalPlayer do
