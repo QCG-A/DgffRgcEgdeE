@@ -2,7 +2,7 @@
 --[[---------------------------------------------------------------------------------------------------
 
 ]]-----------------------------------------------------------------------------------------------------
-getgenv().CurrentVersion = "1.18";
+getgenv().CurrentVersion = "1.19";
 getgenv().ToggleUI = "J";
 
 -- Values --
@@ -3067,7 +3067,7 @@ local PushedUpdate = false;
 
 task.spawn(function()
 	pcall(function()
-	while true do task.wait(1);
+	while true do task.wait(5);
 		
 			Version = http_request({Url = "https://raw.githubusercontent.com/QCG-A/ACG/refs/heads/main/Option/SSVersion"; Method = "GET";})
 			if not Version.Body:find(getgenv().CurrentVersion) then
