@@ -2,7 +2,7 @@
 --[[---------------------------------------------------------------------------------------------------
 
 ]]-----------------------------------------------------------------------------------------------------
-getgenv().CurrentVersion = "1.17";
+getgenv().CurrentVersion = "1.18";
 getgenv().ToggleUI = "J";
 
 -- Values --
@@ -3223,7 +3223,7 @@ HomeSection:AddButton({
 })
 
 HomeSection:AddButton({
-	Name = "Gui Library Made by QCG - A",
+	Name = "Renew Made by QCG - A",
 	Callback = function()
 		local Cheers = "http://www.roblox.com/asset/?id=6811876591"
         local Sound = Instance.new("Sound");Sound.Name = "Sound";Sound.SoundId = Cheers
@@ -3484,7 +3484,7 @@ local BestSpecSection = FarmingTab:DrawSection({
 });
 
 BestSpecSection:AddButton({
-	Name = "Equip Shinra Kusakabe (Best for Private Server Autofarm)",
+	Name = "Equip Shinra Kusakabe (Best Autofarm Spec)",
 	Callback = function()
 		pcall(function()
         if game:GetService("Players").LocalPlayer.Data.StandName.Value ~= "Shinra Kusakabe" then
@@ -3504,7 +3504,7 @@ BestSpecSection:AddButton({
 })
 
 local AutoFarmingSection = FarmingTab:DrawSection({
-	Name = "Auto Farming Items + Auto Farming Bosses / Mobs   💤",
+	Name = "Auto Farming Items, Bosses/Mobs 💤",
 	Position = 'left'	
 });
 
@@ -3547,7 +3547,7 @@ local AutoFarming = AutoFarmingSection:AddToggle({
 })
 
 local DekuFarmSection = FarmingTab:DrawSection({
-	Name = "Auto Deku Slayer Farmer   ⚔️  [Private Servers Only]",
+	Name = "Auto Deku Slayer Farmer ⚔️",
 	Position = 'right'	
 });
 
