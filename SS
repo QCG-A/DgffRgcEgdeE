@@ -2605,17 +2605,32 @@ getgenv().StealingOneForAll = function()
                             end
                         else
                             if not Prompt then
-                                getgenv().Notify("http://www.roblox.com/asset/?id=11803247078","Flame's Notification","Waiting for Kuzma To Spawn","","right",1.5);
+                                Notifier.new({
+                        	Title = "Information",
+                        	Content = "Waiting for Kuzma To Spawn",
+                        	Duration = 3,
+                        	Icon = "rbxassetid://407161956"
+                         });
                             end  
                         end
                     else
                         if not Prompt then
-                            getgenv().Notify("http://www.roblox.com/asset/?id=11803247078","Flame's Notification","Mastery is not Enough","","right",1.5);
+                            Notifier.new({
+                        	Title = "Information",
+                        	Content = "Mastery is not enough",
+                        	Duration = 3,
+                        	Icon = "rbxassetid://407161956"
+                         });
                         end
                     end
                 else
                     if not Prompt then
-                        getgenv().Notify("http://www.roblox.com/asset/?id=11803247078","Flame's Notification","You are not Standless","","right",1.5);
+                        Notifier.new({
+                        	Title = "Information",
+                        	Content = "Your Not Standless",
+                        	Duration = 3,
+                        	Icon = "rbxassetid://407161956"
+                         });
                     end
                 end
             end)
@@ -3254,5 +3269,315 @@ LPSSection:AddButton({
 	end,
 })
 
+LPSSection:AddButton({
+	Name = "Reset Character (Gets rid of Combat Mark)",
+	Callback = function()
+		getgenv().GuildName = "Szechuan";
+    getgenv().Password = "pepper";
 
+    task.spawn(function()
+        pcall(function()
+            local Lplayer = game.Players.LocalPlayer
+            local Location = Lplayer.Character.HumanoidRootPart.CFrame
+            local Guild = game:GetService("Workspace").Living:FindFirstChild(Lplayer.Name).Head:FindFirstChild("GuildGUI");
+            local args = {[1] = Guild and Guild.Text.Text == getgenv().GuildName and "Leave" or "Join",[2] = getgenv().GuildName,[3] = getgenv().Password,[4] = ""};
+            game:GetService("ReplicatedStorage"):WaitForChild("GlobalUsedRemotes"):WaitForChild("SetGuild"):FireServer(unpack(args));
 
+            game.Players.LocalPlayer.CharacterAdded:Wait();
+
+            repeat task.wait(0.015) until Lplayer.Character:FindFirstChild("HumanoidRootPart");task.wait(0.35);
+
+            Lplayer.Character.HumanoidRootPart.CFrame = Location;
+        end)
+    end)
+	end,
+})
+
+local VisSection = HomeTab:DrawSection({
+	Name = "Visual Scripts",
+	Position = 'left'	
+});
+
+local EspPlayer = VisSection:AddToggle({
+	Name = "Esp Players",
+	Flag = "ESP1",
+	Default = false,
+	Callback = function(Value)
+    getgenv().EspPlayers = Value
+    getgenv().EspOnPlayers();
+    end,
+});
+
+local EspEntitie = VisSection:AddToggle({
+	Name = "Esp Entities",
+	Flag = "ESP2",
+	Default = false,
+	Callback = function(Value)
+    getgenv().EspEntities = Value
+    getgenv().EspOnEntities();
+    end,
+});
+
+local EspItem = VisSection:AddToggle({
+	Name = "Esp Items",
+	Flag = "ESP3",
+	Default = false,
+	Callback = function(Value)
+    getgenv().EspItems = Value
+    getgenv().EspOnItems();
+    end,
+})
+
+local EspNpc = VisSection:AddToggle({
+	Name = "Esp Npcs",
+	Flag = "ESP4",
+	Default = false,
+	Callback = function(Value)
+    getgenv().EspNpcs = Value
+    getgenv().EspOnNpcs();
+    end,
+})
+
+local WeatherSection = HomeTab:DrawSection({
+	Name = "Weather Scripts",
+	Position = 'right'	
+});
+
+local Monotone1 = WeatherSection:AddToggle({
+	Name = "Monotone",
+	Flag = "mono",
+	Default = false,
+	Callback = function(Value)
+    getgenv().AutoMonotone = Value
+    getgenv().BlackAndWhite();
+    end,
+})
+
+local Raining1 = WeatherSection:AddToggle({
+	Name = "Raining",
+	Flag = "rain",
+	Default = false,
+	Callback = function(Value)
+    getgenv().AutoRaining = Value
+    getgenv().ItsRaining();
+    end,
+})
+
+local Cloudy1 = WeatherSection:AddToggle({
+	Name = "Cloudy",
+	Flag = "cloud",
+	Default = false,
+	Callback = function(Value)
+    getgenv().AutoCloudy = Value
+    getgenv().ItsCloudy();
+    end,
+})
+
+local SoundSection = HomeTab:DrawSection({
+	Name = "Sound Scripts",
+	Position = 'left'	
+});
+
+local DekuTheme1 = SoundSection:AddToggle({
+	Name = "Deku's Theme'",
+	Flag = "Deku",
+	Default = false,
+	Callback = function(Value)
+    getgenv().AutoDekuTheme = Value
+    getgenv().ActivateDekuTheme();
+    end,
+})
+
+local SukunaTheme1 = SoundSection:AddToggle({
+	Name = "Sukuna's Theme'",
+	Flag = "Sukuna",
+	Default = false,
+	Callback = function(Value)
+    getgenv().AutoSukunaTheme = Value
+    getgenv().ActivateSukunaTheme();
+    end,
+})
+
+local BinahTheme1 = SoundSection:AddToggle({
+	Name = "Binah's Theme'",
+	Flag = "Binah",
+	Default = false,
+	Callback = function(Value)
+    getgenv().AutoBinahTheme = Value
+    getgenv().ActivateBinahTheme();
+    end,
+})
+
+local RolandTheme1 = SoundSection:AddToggle({
+	Name = "Roland's Theme'",
+	Flag = "Roland",
+	Default = false,
+	Callback = function(Value)
+    getgenv().AutoRolandTheme = Value
+    getgenv().ActivateRolandTheme(); 
+    end,
+})
+
+local CidTheme1 = SoundSection:AddToggle({
+	Name = "Cid's Theme'",
+	Flag = "Cid",
+	Default = false,
+	Callback = function(Value)
+    getgenv().AutoCidTheme = Value
+    getgenv().ActivateCidTheme();     
+    end,
+})
+
+-----------------------------------------
+
+-- Storage Category --
+Window:DrawCategory({
+	Name = "Storage"
+});
+
+-- Creating Tab --
+local StorageTab = Window:DrawTab({
+	Name = "Storage",
+	Icon = "save",
+	EnableScrolling = true
+});
+
+local StorageSection = StorageTab:DrawSection({
+	Name = "Storage Stuff",
+	Position = 'left'	
+});
+
+StorageSection:AddButton({
+	Name = "Close / Open Stand Storage",
+	Callback = function()
+		game:GetService("Players").LocalPlayer.PlayerGui.StandStorage.Enabled = not game:GetService("Players").LocalPlayer.PlayerGui.StandStorage.Enabled;
+	end,
+})
+
+StorageSection:AddButton({
+	Name = "Close / Open Item Storage",
+	Callback = function()
+		game:GetService("Players").LocalPlayer.PlayerGui.MenuHolder.Menu.Storage.Visible = not game:GetService("Players").LocalPlayer.PlayerGui.MenuHolder.Menu.Storage.Visible;
+	end,
+})
+
+-- Storage Category --
+Window:DrawCategory({
+	Name = "Farming"
+});
+
+-- Creating Tab --
+local FarmingTab = Window:DrawTab({
+	Name = "Farming",
+	Icon = "axe",
+	EnableScrolling = true
+});
+
+local BestSpecSection = FarmingTab:DrawSection({
+	Name = "Equip Best Farming Spec",
+	Position = 'left'	
+});
+
+BestSpecSection:AddButton({
+	Name = "Equip Shinra Kusakabe (Best for Private Server Autofarm)",
+	Callback = function()
+		pcall(function()
+        if game:GetService("Players").LocalPlayer.Data.StandName.Value ~= "Shinra Kusakabe" then
+            for i = 1,100 do
+                if game:GetService("Players").LocalPlayer.PlayerGui.StandStorage.Outer.Inner.Inner["Slot"..i].Text.Text == "Shinra Kusakabe" then
+                    local args = {"Slot"..i};
+                    if i <= 6 then
+                        game:GetService("ReplicatedStorage").StorageRemote["Slot"..i]:FireServer();
+                    else
+                        game:GetService("ReplicatedStorage").StorageRemote.UseStorageExtra:FireServer(unpack(args));
+                    end
+                end
+            end
+        end
+    end)
+	end,
+})
+
+local AutoFarmingSection = FarmingTab:DrawSection({
+	Name = "Auto Farming Items + Auto Farming Bosses / Mobs   💤",
+	Position = 'left'	
+});
+
+AutoFarmingSection:AddButton({
+	Name = "Quick Explanation (Open F9 Console)",
+	Callback = function()
+		pcall(function()
+        game:GetService("VirtualInputManager"):SendKeyEvent(true,"F9",false,game);
+        Notifier.new({
+                        	Title = "Information",
+                        	Content = "Open F9 Console",
+                        	Duration = 3,
+                        	Icon = "rbxassetid://407161956"
+                         });
+        warn("---------------[Auto Farming]---------------");
+        print("This script allows u to get levels and items faster than usual.");
+        print("You can one shot mobs by grabbing them.");
+        print("Why shinra is the best? Because the spec has 3 grab moves with short cooldown.");
+        print("I dont want you to get banned so pls dont use ps edition in a public server.");
+        print("Why do I need to select title before autofarming? This will keep u safe from the game forcing u to change title.");
+        print("Why does it not go after Menos? Because menos has anti grab so its impossible to one shot him.");
+        print("Why does it not go after Paper Curses? Because they are annoying to deal with and its time consuming.");
+        print("Why does it not go after Thugs or Bandits? Because they its not worth time trying to deal with them.");
+        warn("--------------[Best Settings]--------------");
+        print("The best spec to use the autofarm with: (Shinra Kusakabe).");
+        print("The best title to use the autofarm with: (The Intelligent).");
+        print("I recommend you to use Auto Upgrade Mastery and Auto Breakthrough along with Auto Sell Any Item.");
+    end)
+	end,
+})
+
+local AutoFarming = AutoFarmingSection:AddToggle({
+	Name = "Start Farming",
+	Flag = "Farm",
+	Default = false,
+	Callback = function(Value)
+    getgenv().AutoPublicGrinding = Value
+    getgenv().PublicServerAutofarm();     
+    end,
+})
+
+local DekuFarmSection = FarmingTab:DrawSection({
+	Name = "Auto Deku Slayer Farmer   ⚔️  [Private Servers Only]",
+	Position = 'right'	
+});
+
+DekuFarmSection:AddButton({
+	Name = "Quick Explanation (Open F9 Console)",
+	Callback = function()
+		pcall(function()
+        game:GetService("VirtualInputManager"):SendKeyEvent(true,"F9",false,game);
+        Notifier.new({
+                        	Title = "Information",
+                        	Content = "Open F9 Console",
+                        	Duration = 3,
+                        	Icon = "rbxassetid://407161956"
+                         });
+        print("This script is multiple times faster than both autofarm variants (Public / Private).");
+        print("You must have stage 4 equipped");
+        print("You must have shinra kusakabe in storage");
+        print("It gets u to mastery 3 automatically, as long as u dont run out of cash");
+        print("This script allows u to get masteries / gloves / tokens really fast.");
+        print("It basically does the task of spawning deku/roland and killing it over and over");
+        print("Without Support meaning u wll do autofarm alone just by urself until cash runs out.");
+        print("With Support meaning u wll do autofarm only when deku or roland spawns. (Soon)");
+        print("Support Account meaning u wll do spawn deku/roland for 'With Support Account'.");
+        warn("--------------[Best Settings]--------------");
+        print("The best title to use is The Intelligent (Obtained by buying from laptop).");
+    end)
+	end,
+})
+
+local DekuFarm = DekuFarmSection:AddToggle({
+	Name = "Start Farming (Without Support)",
+	Flag = "DekuFarm",
+	Default = false,
+	Callback = function(Value)
+   getgenv().AutofarmOnDeku1 = Value
+    getgenv().UsingDekuAutofarm1();   
+    end,
+})
