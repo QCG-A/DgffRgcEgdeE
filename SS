@@ -3220,7 +3220,7 @@ HomeSection:AddButton({
 })
 
 -- Creating Local Player Script Section --
-local LPSSection = HomelTab:DrawSection({
+local LPSSection = HomeTab:DrawSection({
 	Name = "Local Player Scripts",
 	Position = 'right'	
 });
