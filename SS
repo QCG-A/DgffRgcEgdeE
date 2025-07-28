@@ -3070,6 +3070,7 @@ task.spawn(function()
 	while true do task.wait(5);
 		
 			Version = http_request({Url = "https://raw.githubusercontent.com/QCG-A/ACG/refs/heads/main/Option/SSVersion"; Method = "GET";})
+			wait(2)
 			if not Version.Body:find(getgenv().CurrentVersion) then
 				if not PushedUpdate or LastVersion ~= getgenv().CurrentVersion then
 					local Error = "http://www.roblox.com/asset/?id=9066167010"
