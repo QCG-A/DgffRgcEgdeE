@@ -3086,12 +3086,13 @@ task.spawn(function()
                         wait(2)
                         loadstring(game:HttpGet("https://raw.githubusercontent.com/QCG-A/SS/refs/heads/main/SS"))()
                         PushedUpdate = false;
-                        break
+                        
                     end
                 else
                     PushedUpdate = false;
                 end
 		end)
+	   break
 	end
 end)
 
