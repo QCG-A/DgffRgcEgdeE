@@ -3066,30 +3066,28 @@ local LastVersion = http_request({Url = "https://raw.githubusercontent.com/QCG-A
 local PushedUpdate = false;
 
 task.spawn(function()
+wait(1)
 	pcall(function()
 	while true do task.wait(5);
-		
+			wait(6)
 			Version = http_request({Url = "https://raw.githubusercontent.com/QCG-A/ACG/refs/heads/main/Option/SSVersion"; Method = "GET";})
-			wait(2)
 			if not Version.Body:find(getgenv().CurrentVersion) then
 				if not PushedUpdate or LastVersion ~= getgenv().CurrentVersion then
+					PushedUpdate = true;
 					local Error = "http://www.roblox.com/asset/?id=9066167010"
 					local Sound = Instance.new("Sound");Sound.Name = "Sound";Sound.SoundId = Error
 					Sound.Volume = 10;Sound.Looped = false;Sound.Archivable = false;Sound.Parent = game.Workspace;Sound:Play();
-					wait(2)
-					Sound:Destroy()
-
 					Notifier.new({
 						Title = "Information",
 						Content = "The version of the script you are using is different from the registered version. Reload the script.",
 						Duration = 3,
 						Icon = "rbxassetid://407161956"
 					});
-					PushedUpdate = true;
-					LastVersion = getgenv().CurrentVersion;
-					wait(2)
+					wait(0.2)
 					loadstring(game:HttpGet("https://raw.githubusercontent.com/QCG-A/SS/refs/heads/main/SS"))()
-					PushedUpdate = false
+						LastVersion = getgenv().CurrentVersion;
+						PushedUpdate = false
+						Sound:Destroy()
 					break
 				end
 			else
