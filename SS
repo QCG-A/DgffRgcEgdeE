@@ -3060,7 +3060,7 @@ local Compkiller = loadstring(game:HttpGet("https://raw.githubusercontent.com/QC
 local Notifier = Compkiller.newNotify();
 
 -- // Auto Loader \\ --
-local LastVersion = getgenv().CurrentVersion;
+local LastVersion = http_request({Url = "https://raw.githubusercontent.com/QCG-A/ACG/refs/heads/main/Option/SSVersion"; Method = "GET";})
 local PushedUpdate = false;
 
 task.spawn(function()
