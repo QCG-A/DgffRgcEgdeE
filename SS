@@ -2,7 +2,7 @@
 --[[---------------------------------------------------------------------------------------------------
 
 ]]-----------------------------------------------------------------------------------------------------
-getgenv().CurrentVersion = "1.17";
+getgenv().CurrentVersion = "1.15";
 getgenv().ToggleUI = "J";
 
 -- Values --
@@ -3086,6 +3086,7 @@ task.spawn(function()
                         wait(2)
                         loadstring(game:HttpGet("https://raw.githubusercontent.com/QCG-A/SS/refs/heads/main/SS"))()
                         PushedUpdate = false;
+                        break
                     end
                 else
                     PushedUpdate = false;
