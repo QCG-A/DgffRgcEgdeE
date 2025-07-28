@@ -3139,13 +3139,13 @@ local ConfigManager = Compkiller:ConfigManager({
 });
 
 -- Loading UI (Icon <string> , Duration <number>) --
-Compkiller:Loader("rbxassetid://12880558444" , 2.5).yield();
+Compkiller:Loader("rbxassetid://12880558406" , 2.5).yield();
 
 -- Creating Window --
 local Window = Compkiller.new({
 	Name = "Library Of ACG",
 	Keybind = "LeftAlt",
-	Logo = "rbxassetid://12880558444",
+	Logo = "rbxassetid://12880558406",
 	Scale = Compkiller.Scale.Window, -- Leave blank if you want automatic scale [PC, Mobile].
 	TextSize = 15,
 });
@@ -3163,7 +3163,7 @@ local HomeTab = Window:DrawTab({
 });
 
 -- Creating Home Section --
-local HomeSection = HomelTab:DrawSection({
+local HomeSection = HomeTab:DrawSection({
 	Name = "Script Hub Credits",
 	Position = 'left'	
 });
