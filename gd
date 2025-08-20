@@ -2,11 +2,10 @@ local MacLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/QCG-A/
 
 local Window = MacLib:Window({
 	Title = "Maclib Demo",
-	Subtitle = "This is a subtitle.",
-	Size = UDim2.fromOffset(694, 644),
+	Size = UDim2.fromOffset(732, 532),
 	DragStyle = 1,
 	DisabledWindowControls = {},
-	ShowUserInfo = true,
+
 	Keybind = Enum.KeyCode.RightControl,
 	AcrylicBlur = true,
 })
@@ -36,18 +35,7 @@ local globalSettings = {
 			})
 		end,
 	}),
-	ShowUserInfo = Window:GlobalSetting({
-		Name = "Show User Info",
-		Default = Window:GetUserInfoState(),
-		Callback = function(bool)
-			Window:SetUserInfoState(bool)
-			Window:Notify({
-				Title = Window.Settings.Title,
-				Description = (bool and "Showing" or "Redacted") .. " User Info",
-				Lifetime = 5
-			})
-		end,
-	})
+
 }
 
 local tabGroups = {
